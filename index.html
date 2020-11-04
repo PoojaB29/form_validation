@@ -1,0 +1,184 @@
+<html>   
+   <head>
+      <title>Form Validation</title>      
+      <script type = "text/javascript">
+         function validate() {
+            
+            if( document.myForm.Name.value == "" ) {
+               alert( "Please provide your name!" );
+               document.myForm.Name.focus() ;
+               return false;
+            }
+            if( document.myForm.Age.value == "" || isNaN(document.myForm.Age.value)) {
+               alert( "Please provide your age!" );
+               document.myForm.Age.focus() ;
+               return false;
+            }
+            if( document.myForm.Gender[0].checked == false && document.myForm.Gender[1].checked == false && document.myForm.Gender[2].checked == false) {
+               alert( "Please choosse your gender!" );
+               document.myForm.Gender.focus() ;
+               return false;
+            }
+            if( document.myForm.EMail.value ) {
+               var emailID = document.myForm.EMail.value;
+               atpos = emailID.indexOf("@");
+               dotpos = emailID.lastIndexOf(".");
+               
+               if (atpos < 1 || ( dotpos - atpos < 2 ) || document.myForm.EMail.value == "") {
+                  alert("Please enter correct email ID in the format eg:ram@gamil.com")
+                  document.myForm.EMail.focus() ;
+                  return false;
+               }
+            }
+            if( document.myForm.Number.value == "" || document.myForm.Number.value.length != 10 ) {
+                    
+               alert( "Please provide a valid phone number" );
+               document.myForm.Number.focus() ;
+               return false;
+            }
+            if( document.myForm.Zip.value == "" || isNaN( document.myForm.Zip.value ) ||
+               document.myForm.Zip.value.length != 6 ) {
+                    
+               alert( "Please provide a contact in the format ##########." );
+               document.myForm.Zip.focus() ;
+               return false;
+            }
+            if( document.myForm.Country.value == "-1" ) {
+               alert( "Please provide your country!" );
+               return false;
+            }
+            if(!myForm.terms.checked) {
+               alert("Please indicate that you accept the Terms and Conditions");
+               form.terms.focus();
+               return false;
+            }
+               return( true );
+         }
+      </script> 
+      <style>
+         @import url('https://fonts.googleapis.com/css2?family=Raleway:ital@1&display=swap');
+
+         body{
+            font-family: 'Raleway', sans-serif;
+            font-weight: 900;
+            line-height: 2.5em;
+         }
+         div form table{
+            width: auto;
+         }
+         h1{
+            color: blue;
+            text-align: center;
+            font-size: 50px;
+            text-shadow: 2px 2px 5px red;
+         }
+         div{
+            margin: 0px auto;
+            width: 40%;
+            padding: 30px;
+            font-size: 20px;
+            background-color: aqua;
+            text-align: center;
+            
+         }
+         input[type= text],select,input[type = number]
+         {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            font-size: 14px;
+         }
+         table, tr, td{
+            border: 1px solid black;
+            width: 7%;
+
+         }
+         
+         input[type= submit]
+         {
+            width: 100%;
+            background-color: #003399;
+            color: white;
+            padding: 14px 20px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+         }
+         input[type = submit]:hover
+         {
+            background-color: #2F4F4F;
+         }
+      </style>
+    </head>
+   
+   <body>
+      <h1>Registration form</h1>
+      <div>
+         <form action = "#" name = "myForm" onsubmit = "return(validate());">
+            <table  cellspacing = "1" cellpadding = "1">
+               
+               <tr>
+                  <td align = "center"><h2>Name<h2></td>
+                  <td><input type = "text" name = "Name" /></td>
+               </tr>
+               <tr>
+                  <td align = "center"><h2>Age</h2></td>
+                  <td><input type = "number" name = "Age" /></td>
+               </tr>
+
+               <tr>
+                  <td align = "center"><h2>Gender</h2></td>
+                  <td>
+                     <input type="radio" id="male" name="Gender" value="male">
+                     <label for="male">Male</label>
+                     <input type="radio" id="female" name="Gender" value="female">
+                     <label for="female">Female</label>
+                     <input type="radio" id="other" name="Gender" value="other">
+                     <label for="other">Other</label>
+                  </td>
+               </tr>
+
+               <tr>
+                  <td align = "center"><h2>EMail</h2></td>
+                  <td><input type = "text" name = "EMail" /></td>
+               </tr>
+
+               <tr>
+                  <td align = "center"><h2>Phone Number</h2></td>
+                  <td><input type = "number" name = "Number" /></td>
+               </tr>
+                  
+               <tr>
+                  <td align = "center"><h2>Zip Code</h2></td>
+                  <td><input type = "number" name = "Zip" /></td>
+               </tr>
+
+
+               <tr>
+                  <td align = "center"><h2>Country</h2></td>
+                  <td>
+                     <select name = "Country">
+                        <option value = "-1" selected>[Choose your country]</option>
+                        <option value = "1">USA</option>
+                        <option value = "2">UK</option>
+                        <option value = "3">INDIA</option>
+                        <option value = "4">JAPAN</option>
+                        <option value = "5">RUSSIA</option>
+                     </select>
+                  </td>
+               </tr>
+               
+               <tr>
+                  <td align = "right"></td>
+                  <td><input type="checkbox" name="terms" > I accept the <u style="color: red;">Terms and Conditions</u>
+                  <p><input type = "submit" value = "Submit" /></p></td>
+               </tr>
+               
+            </table>
+         </form> 
+      </div>     
+   </body>
+</html>
